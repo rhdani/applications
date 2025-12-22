@@ -1,0 +1,59 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spelling Bee Helper</title>
+</head>
+<body>
+    <h1>Spelling Bee Solver</h1>
+
+    <form method="post">
+        Center Letter:
+        <input name="center" maxlength="1" required><br><br>
+
+        Other Letters (6):
+        <input name="others" maxlength="6" required><br><br>
+
+        <button type="submit">Solve</button>
+    </form>
+    <hr>
+        <h2>Add Word to Dictionary</h2>
+
+        <form method="post" action="/add-word">
+            <input name="new_word" placeholder="enter word" required>
+            <button type="submit">Save</button>
+        </form>
+
+    <p style="font-size: 0.9em; color: gray;">
+        Word will be saved to your local dictionary.
+    </p>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul style="color: green;">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+{% endwith %}
+
+    {% if result %}
+        <h2>Score: {{ result.score }}</h2>
+
+        <h3>Pangrams</h3>
+        <ul>
+            {% for w in result.pangrams %}
+                <li><b>{{ w }}</b></li>
+            {% endfor %}
+        </ul>
+
+        <h3>All Words ({{ result.words|length }})</h3>
+        <ul>
+            {% for w in result.words %}
+                <li>{{ w }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
