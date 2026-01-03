@@ -5,7 +5,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.document_loaders import TextLoader
 
-# 1. Setup API Key
 # 1. Initialize modern components
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 #prompt = ChatPromptTemplate.from_template("Summarize the following text concisely:\n\n{text}")
