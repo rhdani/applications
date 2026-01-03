@@ -6,7 +6,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.document_loaders import TextLoader
 
 # 1. Setup API Key
-os.environ["OPENAI_API_KEY"] = "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"
 # 1. Initialize modern components
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 #prompt = ChatPromptTemplate.from_template("Summarize the following text concisely:\n\n{text}")
