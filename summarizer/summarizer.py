@@ -1,10 +1,14 @@
 import os
+from dotenv import load_dotenv
 import argparse
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_community.document_loaders import TextLoader
 
+load_dotenv()
+# 1. Setup API Key
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 # 1. Initialize modern components
 llm = ChatOpenAI(model="gpt-4o", temperature=0)
 #prompt = ChatPromptTemplate.from_template("Summarize the following text concisely:\n\n{text}")
